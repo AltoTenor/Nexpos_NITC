@@ -1,0 +1,55 @@
+int main()
+{
+    decl
+        int temp,fd,retval;
+        str username,password;
+    enddecl
+    begin
+        while(1==1)do
+            temp = exposcall("Write",-2,"username");
+            temp = exposcall("Read",-1,username);
+            temp = exposcall("Write",-2,"password");
+            temp = exposcall("Read",-1,password);
+            retval = exposcall("Login",username,password);
+            if (retval==-1)then
+                temp = exposcall("Write",-2,"Wrong");
+                temp = exposcall("Write",-2,"Creds!");
+            else
+                if (retval == -2)then
+                    temp = exposcall("Write",-2,"Permission");
+                    temp = exposcall("Write",-2,"Denied!");
+                endif;
+            endif;
+        endwhile;
+        return 0;
+    end
+}
+
+// int main(){
+
+// decl
+// 	int temp;
+// 	str uname,pwd;
+// enddecl
+
+// begin
+// 	while(1==1)do
+// 		temp = exposcall("Write", -2, "username:");
+// 		temp = exposcall("Read", -1, uname);
+
+//         temp = exposcall("Write", -2, "password:");
+//         temp = exposcall("Read", -1, pwd);
+
+//         temp = exposcall ("Login", uname, pwd);
+// 		if (temp == -1) then
+// 			write ("Wrong uname/pwd");
+// 		endif;
+
+// 		if (temp == -2) then
+// 		       write ("permission denied");
+// 		endif;
+// 	endwhile;
+
+//         return 0;
+//     end
+// }

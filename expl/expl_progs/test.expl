@@ -1,0 +1,13 @@
+int main()
+{
+    decl
+        int a,temp,fd;
+        str input,inv;
+    enddecl
+    begin
+        // a = exposcall("Newusr","aritro","pass");
+        // temp = exposcall("Write",-2,a);
+        breakpoint;
+        return 0;
+    end
+}
