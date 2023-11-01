@@ -1,0 +1,56 @@
+load --os=primary $HOME/mynexpos/nespl/nespl_progs/ap/OS_Startup.xsm
+load --os=secondary $HOME/mynexpos/nespl/nespl_progs/ap/OS_Startup2.xsm
+load --library $HOME/mynexpos/expl/library.lib
+load --module 0 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_0_Resource_Manager.xsm
+load --module 1 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_1_Process_Manager.xsm
+load --module 2 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_2_Memory_Manager.xsm
+load --module 3 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_3_File_Manager.xsm
+load --module 4 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_4_Device_Manager.xsm
+load --module 5 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_5_Scheduler.xsm
+load --module 6 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_6_Pager.xsm
+load --module 7 $HOME/mynexpos/nespl/nespl_progs/ap/boot_module_s28.xsm
+load --module 8 $HOME/mynexpos/nespl/nespl_progs/ap/MOD_8_Access_Control.xsm
+load --int=timer $HOME/mynexpos/nespl/nespl_progs/ap/INT_1_Timer.xsm
+load --int=console $HOME/mynexpos/nespl/nespl_progs/ap/console_interupt_handler.xsm
+load --int=disk $HOME/mynexpos/nespl/nespl_progs/ap/disk_interupt_handler.xsm
+load --int=4 $HOME/mynexpos/nespl/nespl_progs/ap/INT_4.xsm
+load --int=5 $HOME/mynexpos/nespl/nespl_progs/ap/INT_5.xsm
+load --int=6 $HOME/mynexpos/nespl/nespl_progs/ap/INT_6_Read.xsm
+load --int=7 $HOME/mynexpos/nespl/nespl_progs/ap/INT_7_Write.xsm
+load --int=8 $HOME/mynexpos/nespl/nespl_progs/ap/INT_8_Fork.xsm
+load --int=9 $HOME/mynexpos/nespl/nespl_progs/ap/INT_9_exec.xsm
+load --int=10 $HOME/mynexpos/nespl/nespl_progs/ap/int_10_Exit_handler.xsm
+load --int=11 $HOME/mynexpos/nespl/nespl_progs/ap/INT_11.xsm
+load --int=12 $HOME/mynexpos/nespl/nespl_progs/ap/INT_12_Logout.xsm
+load --int=13 $HOME/mynexpos/nespl/nespl_progs/ap/INT_13.xsm
+load --int=14 $HOME/mynexpos/nespl/nespl_progs/ap/INT_14.xsm
+load --int=15 $HOME/mynexpos/nespl/nespl_progs/ap/INT_15_Shutdown.xsm
+load --int=16 $HOME/mynexpos/nespl/nespl_progs/ap/INT_16.xsm
+load --int=17 $HOME/mynexpos/nespl/nespl_progs/ap/INT_17_Login.xsm
+load --exhandler $HOME/mynexpos/nespl/nespl_progs/exception_handler.xsm
+load --idle $HOME/mynexpos/expl/expl_progs/idle.xsm
+load --init $HOME/mynexpos/expl/expl_progs/login.xsm
+load --shell $HOME/mynexpos/expl/expl_progs/ExtShell.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/oddnos.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/gcd.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/pid.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/test.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/fC.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/fD.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/cat.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/ls.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/cp.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/rm.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/lu.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/ru.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/a271.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/a272.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/a273.xsm  
+load --exec $HOME/mynexpos/expl/expl_progs/a274.xsm  
+load --exec $HOME/mynexpos/expl/expl_progs/pgm1.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/pgm2.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/merge.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/m_merge.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/m_store.xsm  
+load --exec $HOME/mynexpos/expl/expl_progs/m_sort.xsm
+load --data $HOME/mynexpos/sample.dat

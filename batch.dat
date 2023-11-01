@@ -1,30 +1,32 @@
-load --os=primary $HOME/mynexpos/nespl/nespl_progs/OStartup27.xsm
+load --os=primary $HOME/mynexpos/nespl/nespl_progs/OStartup.xsm
+load --os=secondary $HOME/mynexpos/nespl/nespl_progs/OStartupSec.xsm
 load --library $HOME/mynexpos/expl/library.lib
-load --module 0 $HOME/mynexpos/nespl/nespl_progs/MOD_0_stage24.xsm
-load --module 1 $HOME/mynexpos/nespl/nespl_progs/MOD_1_stage25.xsm
-load --module 2 $HOME/mynexpos/nespl/nespl_progs/MOD_2_stage27.xsm
-load --module 3 $HOME/mynexpos/nespl/nespl_progs/MOD_3_stage25.xsm
-load --module 4 $HOME/mynexpos/nespl/nespl_progs/MOD_4_stage23.xsm
-load --module 5 $HOME/mynexpos/nespl/nespl_progs/MOD_5_stage27.xsm
-load --module 6 $HOME/mynexpos/nespl/nespl_progs/MOD_6_stage27.xsm
-load --module 7 $HOME/mynexpos/nespl/nespl_progs/MOD_7_stage27.xsm
-load --int=timer $HOME/mynexpos/nespl/nespl_progs/sample_timer_27.xsm
-load --int=console $HOME/mynexpos/nespl/nespl_progs/console_int16.xsm
-load --int=disk $HOME/mynexpos/nespl/nespl_progs/disk_int18.xsm
-load --int=4 $HOME/mynexpos/nespl/nespl_progs/int4_stage23.xsm
-load --int=5 $HOME/mynexpos/nespl/nespl_progs/int5_stage25.xsm
-load --int=6 $HOME/mynexpos/nespl/nespl_progs/int6_stage24.xsm
-load --int=7 $HOME/mynexpos/nespl/nespl_progs/int7_stage25.xsm
-load --int=8 $HOME/mynexpos/nespl/nespl_progs/int8_stage24.xsm
-load --int=9 $HOME/mynexpos/nespl/nespl_progs/int9_stage19.xsm
-load --int=10 $HOME/mynexpos/nespl/nespl_progs/int10_stage20.xsm
-load --int=11 $HOME/mynexpos/nespl/nespl_progs/int11_stage21.xsm
-load --int=12 $HOME/mynexpos/nespl/nespl_progs/int12_stage26.xsm
-load --int=13 $HOME/mynexpos/nespl/nespl_progs/int13_stage22.xsm
-load --int=14 $HOME/mynexpos/nespl/nespl_progs/int14_stage22.xsm
-load --int=15 $HOME/mynexpos/nespl/nespl_progs/int15_stage26.xsm
-load --int=16 $HOME/mynexpos/nespl/nespl_progs/int16_stage26.xsm
-load --int=17 $HOME/mynexpos/nespl/nespl_progs/int17_stage26.xsm
+load --module 0 $HOME/mynexpos/nespl/nespl_progs/MOD_0.xsm
+load --module 1 $HOME/mynexpos/nespl/nespl_progs/MOD_1.xsm
+load --module 2 $HOME/mynexpos/nespl/nespl_progs/MOD_2.xsm
+load --module 3 $HOME/mynexpos/nespl/nespl_progs/MOD_3.xsm
+load --module 4 $HOME/mynexpos/nespl/nespl_progs/MOD_4.xsm
+load --module 5 $HOME/mynexpos/nespl/nespl_progs/MOD_5.xsm
+load --module 6 $HOME/mynexpos/nespl/nespl_progs/MOD_6.xsm
+load --module 7 $HOME/mynexpos/nespl/nespl_progs/MOD_7.xsm
+load --module 8 $HOME/mynexpos/nespl/nespl_progs/MOD_8.xsm
+load --int=timer $HOME/mynexpos/nespl/nespl_progs/timer.xsm
+load --int=console $HOME/mynexpos/nespl/nespl_progs/console_int.xsm
+load --int=disk $HOME/mynexpos/nespl/nespl_progs/disk_int.xsm
+load --int=4 $HOME/mynexpos/nespl/nespl_progs/int4.xsm
+load --int=5 $HOME/mynexpos/nespl/nespl_progs/int5.xsm
+load --int=6 $HOME/mynexpos/nespl/nespl_progs/int6.xsm
+load --int=7 $HOME/mynexpos/nespl/nespl_progs/int7.xsm
+load --int=8 $HOME/mynexpos/nespl/nespl_progs/int8.xsm
+load --int=9 $HOME/mynexpos/nespl/nespl_progs/int9.xsm
+load --int=10 $HOME/mynexpos/nespl/nespl_progs/int10.xsm
+load --int=11 $HOME/mynexpos/nespl/nespl_progs/int11.xsm
+load --int=12 $HOME/mynexpos/nespl/nespl_progs/int12.xsm
+load --int=13 $HOME/mynexpos/nespl/nespl_progs/int13.xsm
+load --int=14 $HOME/mynexpos/nespl/nespl_progs/int14.xsm
+load --int=15 $HOME/mynexpos/nespl/nespl_progs/int15.xsm
+load --int=16 $HOME/mynexpos/nespl/nespl_progs/int16.xsm
+load --int=17 $HOME/mynexpos/nespl/nespl_progs/int17.xsm
 load --exhandler $HOME/mynexpos/nespl/nespl_progs/exception_handler.xsm
 load --idle $HOME/mynexpos/expl/expl_progs/idle.xsm
 load --init $HOME/mynexpos/expl/expl_progs/login.xsm
@@ -49,6 +51,6 @@ load --exec $HOME/mynexpos/expl/expl_progs/pgm1.xsm
 load --exec $HOME/mynexpos/expl/expl_progs/pgm2.xsm
 load --exec $HOME/mynexpos/expl/expl_progs/merge.xsm
 load --exec $HOME/mynexpos/expl/expl_progs/m_merge.xsm
-load --exec $HOME/mynexpos/expl/expl_progs/m_store.xsm
+load --exec $HOME/mynexpos/expl/expl_progs/m_store.xsm  
 load --exec $HOME/mynexpos/expl/expl_progs/m_sort.xsm
 load --data $HOME/mynexpos/sample.dat
