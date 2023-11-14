@@ -26,6 +26,9 @@ if (functionNum == 1)then
     endwhile;
     return;
 
+    //test and set
+    // 1. return KERN_LOCK
+    // 2. Setting KERN_LOCK
 
 endif;
 

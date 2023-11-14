@@ -37,9 +37,6 @@ alias newPID R4;
 if ( CORE == 0 )then
 
     //Stage 27 modifications
-
-
-
     newPID = -1;
     //If logout status is set and secondary core not on IDLE2 then IDLE 
     
@@ -53,28 +50,30 @@ if ( CORE == 0 )then
             //paging needed so swapper scheduled
         endif;
     else
-        alias ind R5;
-        ind = ((currentPID + 1) % 16);
+        if ( [SYSTEM_STATUS_TABLE + 7] == 1 && [SYSTEM_STATUS_TABLE + 6] != 14)then
+            newPID = 0;
+        else
+            alias ind R5;
+            ind = ((currentPID + 1) % 16);
 
-        while( ind != currentPID )do
-            if ( ([PROCESS_TABLE + ind* 16 + 6] == 0) && ([PROCESS_TABLE + ind* 16 + 4]==CREATED ||  [PROCESS_TABLE + ind* 16 + 4]==READY) && ind != [SYSTEM_STATUS_TABLE + 6] )then
-                if (ind != 14 && ind != 0 && ind != 15)then
-                    break;
+            while( ind != currentPID )do
+                process_table_entry = PROCESS_TABLE + ind* 16;
+                if ( ([process_table_entry + 6] == 0) && ([process_table_entry + 4]==CREATED ||  [process_table_entry + 4]==READY) && ind != [SYSTEM_STATUS_TABLE + 6] )then
+                    if (ind < 14 && ind != 0 )then
+                        newPID = ind;
+                        break;
+                    endif;
                 endif;
-            endif;
-            ind = ((ind + 1) % 16);
-        endwhile;
-
-        newPID = ind;
+                ind = ((ind + 1) % 16);
+            endwhile;
+        endif;
     endif;
     
 
-    if ( [SYSTEM_STATUS_TABLE + 7] == 1 && [SYSTEM_STATUS_TABLE + 6] != 14)then
-        newPID = 0;
-    endif;
+    
     
 
-    if (newPID == currentPID)then
+    if (newPID == -1)then
         newPID = 0;
     endif;
 
@@ -101,22 +100,22 @@ if ( CORE == 1 )then
     else
 
         alias ind R5;
-        ind = ((currentPID + 1) % 15);
+        ind = ((currentPID + 1) % 16);
 
-        while( 1==1 )do
-            if ( ([PROCESS_TABLE + ind* 16 + 6] == 0) && ([PROCESS_TABLE + ind* 16 + 4]==CREATED ||  [PROCESS_TABLE + ind* 16 + 4]==READY ||  [PROCESS_TABLE + ind* 16 + 4]==RUNNING ) && ind > 2 && ind != [SYSTEM_STATUS_TABLE + 1])then
-                break;
+        while( ind != currentPID )do
+            process_table_entry = PROCESS_TABLE + ind * 16;
+            if ( ind != [SYSTEM_STATUS_TABLE + 1] && ([process_table_entry + 6] == 0) && ([process_table_entry + 4]==CREATED ||  [process_table_entry + 4]==READY  )   )then
+                if (ind > 2 && ind < 14)then
+                    newPID = ind;
+                    break;
+                endif;
             endif;
-            if (ind == currentPID)then
-                break;
-            endif;
-            ind = ((ind + 1) % 15);
+            ind = ((ind + 1) % 16);
         endwhile;
 
-        newPID = ind;
     endif;
 
-    if (newPID == currentPID)then
+    if (newPID == -1)then
         newPID = 14;
     endif;
 

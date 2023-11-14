@@ -1,56 +1,53 @@
 //ACCESS CONTROL MODULE
-// print "MOD8";
 
+define TURN_KERN_LOCK 29576;
+define FLAGS_KERN_LOCK 29579;
+define TURN_SCHED_LOCK 29577;
+define FLAGS_SCHED_LOCK 29581;
 
 alias functionNum R1;
-alias currPID R2;
-alias Turn_Kern_Lock R3;
-alias Turn_Sched_Lock R4;
-alias Flag_Kern_Lock R5;
-alias Flag_Sched_Lock R6;
 
-Turn_Kern_Lock = KERN_LOCK;
-Turn_Sched_Lock = SCHED_LOCK;
-Flag_Kern_Lock = ACCESS_LOCK_TABLE+3;
-Flag_Sched_Lock = ACCESS_LOCK_TABLE+5;
 
-//Acquire Kern Lock
+
+// Acquire Kern Lock
 if (functionNum == 1)then
 
-    currPID = [SYSTEM_STATUS_TABLE + 6];
 
     //If core is secondary
     if (CORE == 1)then
         //If paging status on or logout_status is on
-        if ( [SYSTEM_STATUS_TABLE + 5] != 0 ||  [SYSTEM_STATUS_TABLE + 7] == 1 )then
-            [ PROCESS_TABLE + 16*currPID + 4 ] = READY;
-            multipush(R1,R2,R3,R4,R5,R6);
+        if ( [SYSTEM_STATUS_TABLE + 5] == 1 ||  [SYSTEM_STATUS_TABLE + 7] == 1 )then
+            [ PROCESS_TABLE + 16*[SYSTEM_STATUS_TABLE + 5*CORE + 1] + 4 ] = READY;
+            multipush(R1);
             call SCHEDULER;
-            multipop(R1,R2,R3,R4,R5,R6);
+            multipop(R1);
         endif;
     endif;
 
     //Spin Locking Kern Lock
-    [ Flag_Kern_Lock + CORE ] = 1;
+    [ FLAGS_KERN_LOCK + CORE ] = 1;
     //Turn is set to Secondary
-    [ Turn_Kern_Lock ] = 1-CORE;
+    [ TURN_KERN_LOCK ] = 1-CORE;
 
     //Busy Loop
-    while( [ Flag_Kern_Lock + (1-CORE) ] == 1 && [ Turn_Kern_Lock ] == (1-CORE) )do
+    while( [ FLAGS_KERN_LOCK + (1-CORE) ] == 1 && [ TURN_KERN_LOCK ] == (1-CORE) )do
         continue;
     endwhile;
+    return;
+    
 endif;
 
-//Acquire Sched Lock
+// Acquire Sched Lock
 if (functionNum == 2)then
 
     //Spin Locking Sched Lock
-    [ Flag_Sched_Lock + CORE ] = 1;
+    [ FLAGS_SCHED_LOCK + CORE ] = 1;
     //Turn is set to Secondary
-    [ Turn_Sched_Lock ] = 1-CORE;
+    [ TURN_SCHED_LOCK ] = 1-CORE;
 
     //Busy Loop
-    while( [ Flag_Sched_Lock + (1-CORE) ] == 1 && [ Turn_Sched_Lock ] == (1-CORE) )do
+    while( [ FLAGS_SCHED_LOCK + (1-CORE) ] == 1 && [ TURN_SCHED_LOCK ] == (1-CORE) )do
+        // print CORE;
         continue;
     endwhile;
 
@@ -76,11 +73,11 @@ if (functionNum == 4)then
     alias LockVariableAddr R2;
 
     if (LockVariableAddr == KERN_LOCK)then
-        [ Flag_Kern_Lock + CORE ] = 0;
+        [ FLAGS_KERN_LOCK + CORE ] = 0;
     endif;
 
     if (LockVariableAddr == SCHED_LOCK)then
-        [ Flag_Sched_Lock + CORE ] = 0;
+        [ FLAGS_SCHED_LOCK + CORE ] = 0;
     endif;
     return;
 

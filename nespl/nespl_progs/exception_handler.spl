@@ -22,6 +22,7 @@ alias ptbr R2;
 ptbr = [PROCESS_TABLE + ([SYSTEM_STATUS_TABLE + 5*CORE + 1] * 16) + 14];
 
 if ( EC != 0 || userSP == [PROCESS_TABLE + ([SYSTEM_STATUS_TABLE + 5*CORE + 1]*16)+ 15]*512-1 )then
+    breakpoint;
     if ( userSP == ((PTLR * 512) - 1) )then
         print "UsrStack";
     endif; 
@@ -60,13 +61,13 @@ else
         multipush(R1,R2,EIP,EC,EPN,EMA);
         R1 = 5;
         R2 = [ DISK_MAP_TABLE + [SYSTEM_STATUS_TABLE + 5*CORE + 1]*10 + EPN];
+        // breakpoint;
         call MEMORY_MANAGER;
         multipop(R1,R2,EIP,EC,EPN,EMA);
 
         [ptbr + EPN*2]  = R0;
         [ptbr + EPN*2 + 1] = "1100";
     else
-        // breakpoint;
         
         multipush(R1,R2,R3,EIP,EC,EPN,EMA);
         R1 = 1;

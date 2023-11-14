@@ -9,7 +9,7 @@ load --module 4 $HOME/mynexpos/nespl/nespl_progs/MOD_4.xsm
 load --module 5 $HOME/mynexpos/nespl/nespl_progs/MOD_5_test.xsm
 load --module 6 $HOME/mynexpos/nespl/nespl_progs/MOD_6.xsm
 load --module 7 $HOME/mynexpos/nespl/nespl_progs/MOD_7.xsm
-load --module 8 $HOME/mynexpos/nespl/nespl_progs/MOD_8_Peterson.xsm
+load --module 8 $HOME/mynexpos/nespl/nespl_progs/MOD_8.xsm
 load --int=timer $HOME/mynexpos/nespl/nespl_progs/timer.xsm
 load --int=console $HOME/mynexpos/nespl/nespl_progs/console_int.xsm
 load --int=disk $HOME/mynexpos/nespl/nespl_progs/disk_int.xsm

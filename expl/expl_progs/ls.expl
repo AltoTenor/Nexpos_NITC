@@ -2,7 +2,7 @@ int main()
 {
     decl
         int temp,fd;
-        int fileName;
+        int fileName,fileSize;
     enddecl
     begin
         //Open root file
@@ -13,12 +13,15 @@ int main()
 
         //Read File Names
         temp = exposcall("Read",fd,fileName);
+        temp = exposcall("Read",fd,fileSize);
         while( temp != -2 )do
             if (fileName != -1)then
                 temp = exposcall("Write",-2,fileName);
+                temp = exposcall("Write",-2,fileSize);
             endif;
-            temp = exposcall("Seek",fd,7);
+            temp = exposcall("Seek",fd,6);
             temp = exposcall("Read",fd,fileName);
+            temp = exposcall("Read",fd,fileSize);
         endwhile;
         
         //Closed root
